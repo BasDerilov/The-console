@@ -1,0 +1,9 @@
+.blink {
+  animation: blinker 1s cubic-bezier(0.92, -0.56, 0, 1.56) infinite;
+}
+
+@keyframes blinker {
+  100% {
+    opacity: 0;
+  }
+}

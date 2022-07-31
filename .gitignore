@@ -1,0 +1,6 @@
+#cache files
+.parcel-cache
+node_modules
+
+#build folder
+dist
