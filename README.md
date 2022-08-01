@@ -14,7 +14,7 @@ Getting the repo:
 
 To install all dependancies:
 
- `npm install`
+ `npm ci`
 
 Running the dev environment:
 
