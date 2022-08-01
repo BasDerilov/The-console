@@ -16,7 +16,7 @@ export class FakeConsole {
     loggedArr.push(newLineElement);
 
     if (loggedArr.length > 7) {
-      console.log(loggedArr.shift());
+      loggedArr.shift();
     }
 
     fakeConsole.innerHTML = "";
