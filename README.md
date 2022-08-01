@@ -4,7 +4,7 @@ The console is just a little exercise which I maybe spent too much time on.
 
 ## Dependencies
 
-The only thing you need installed to run the app is NodeJs and git.
+The only thing you need installed to run the app is NodeJS and git.
 
 ### How to run 
 
