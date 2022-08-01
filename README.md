@@ -12,7 +12,7 @@ Getting the repo:
 
  `git clone https://github.com/BasDerilov/The-console.git && cd The-console`
 
-To install all dependancies:
+To install all dependencies:
 
  `npm ci`
 
