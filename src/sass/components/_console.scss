@@ -1,3 +1,23 @@
+@import "../variables";
+
 #console {
-  background-color: black;
+  p {
+    color: $primary;
+    font-size: 27px;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .animate {
+    animation: typing 4.5s steps(40, end);
+  }
+
+  @keyframes typing {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 100%;
+    }
+  }
 }
