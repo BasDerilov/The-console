@@ -1,6 +1,6 @@
 # The-console
 
-The console is just a little exercise which I maybe spent too much time
+The console is just a little exercise which I maybe spent too much time on.
 
 ## Dependencies
 
