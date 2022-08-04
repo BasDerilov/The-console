@@ -1,6 +1,7 @@
 @import "../variables";
 
 #console {
+  min-height: 30vh;
   p {
     color: $primary;
     font-size: 27px;

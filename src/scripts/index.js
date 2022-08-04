@@ -6,176 +6,75 @@ import * as functions from "./functions";
 let logger = FakeConsole;
 
 const switchElement = document.getElementById("consoleSwitch");
-const celsiusToFarenBtn = document.getElementById("CelsiusToFaren");
-const farenToCelsiusBtn = document.getElementById("FarenToCelsius");
-const positiveOrNegativeBtn = document.getElementById("PositiveOrNegative");
-const getAverageBtn = document.getElementById("GetAverage");
-const closestToHundredBtn = document.getElementById("ClosestToHundred");
-const getGradeBtn = document.getElementById("GetGrade");
-const minutesToSecondsBtn = document.getElementById("MinutesToSeconds");
-const sumOfTwoPrecedingBtn = document.getElementById("SumOfTwoPreceding");
-const daysToYearsBtn = document.getElementById("DaysToYears");
-const basketballPointsBtn = document.getElementById("BasketballPoints");
-const animalLegsBtn = document.getElementById("AnimalLegs");
-const sumAllPrecedingBtn = document.getElementById("SumAllPreceding");
+const switchDomainBtn = document.getElementById("1");
+const civilizeBtn = document.getElementById("3");
+const capitalizeBtn = document.getElementById("4");
+const validStringBtn = document.getElementById("5");
+const isItJavaBtn = document.getElementById("6");
+const checkDatesBtn = document.getElementById("7");
+const bombBtn = document.getElementById("8");
+const pastaBtn = document.getElementById("9");
+const bri4kaBtn = document.getElementById("10");
+const fugitiveWordBtn = document.getElementById("11");
+const sumAllPrecedingBtn = document.getElementById("12");
 
 Greet();
 SwitchConsole();
 
 switchElement.addEventListener("click", SwitchConsole);
 
-celsiusToFarenBtn.addEventListener("click", (event) => {
-  const value = parseInt(prompt("Enter celsius"));
-
-  if (value !== null) {
-    logger.log(
-      `The output of ${event.originalTarget.innerHTML} is : ${
-        Math.round(functions.CelsiusToFarenheit(value) * 10) / 10
-      }`
-    );
-  }
+switchDomainBtn.addEventListener("click", (event) => {
+  const value = prompt("Enter email");
+  LogOutput(HandleInput(functions.ReplaceDomain, value), event);
 });
 
-farenToCelsiusBtn.addEventListener("click", (event) => {
-  const value = parseInt(prompt("Enter farenheit"));
-
-  if (value !== null) {
-    logger.log(
-      `The output of ${
-        event.originalTarget.innerHTML
-      } is : ${functions.FarenheitToCelsius(value)}`
-    );
-  }
+civilizeBtn.addEventListener("click", (event) => {
+  const value = prompt("Enter your question or sentance");
+  LogOutput(HandleInput(functions.Civilize, value), event);
 });
 
-positiveOrNegativeBtn.addEventListener("click", (event) => {
-  const value = parseInt(prompt("Entet a number"));
-
-  if (value !== null) {
-    logger.log(
-      `The output of ${
-        event.originalTarget.innerHTML
-      } is : ${functions.PositiveOrNegative(value)}`
-    );
-  }
+capitalizeBtn.addEventListener("click", (event) => {
+  const value = prompt("Enter string to capitalise");
+  LogOutput(HandleInput(functions.Capitalize, value), event);
 });
 
-getAverageBtn.addEventListener("click", (event) => {
-  const valueOne = parseInt(prompt("Enter first number"));
-  const valueTwo = parseInt(prompt("Enter second number"));
-
-  if (valueOne !== null && valueTwo !== null) {
-    logger.log(
-      `The output of ${event.originalTarget.innerHTML} is : ${functions.Average(
-        valueOne,
-        valueTwo
-      )}`
-    );
-  }
+validStringBtn.addEventListener("click", (event) => {
+  const value = prompt("Enter a valid string").trim();
+  LogOutput(HandleInput(functions.ValidateString, value), event);
 });
 
-closestToHundredBtn.addEventListener("click", (event) => {
-  const valueOne = parseInt(prompt("Enter first number"));
-  const valueTwo = parseInt(prompt("Enter second number"));
-
-  if (valueOne !== null && valueTwo !== null) {
-    logger.log(
-      `The output of ${
-        event.originalTarget.innerHTML
-      } is : ${functions.ReturnClosestToHundred(valueOne, valueTwo)}`
-    );
-  }
+isItJavaBtn.addEventListener("click", (event) => {
+  const value = prompt("Enter word");
+  LogOutput(HandleInput(functions.Java, value), event);
 });
 
-getGradeBtn.addEventListener("click", (event) => {
-  const value = parseInt(prompt("Enter points"));
-
-  if (value !== null) {
-    logger.log(
-      `The output of ${
-        event.originalTarget.innerHTML
-      } is : ${functions.GetGrade(value)}`
-    );
-  }
+checkDatesBtn.addEventListener("click", (event) => {
+  const value1 = prompt("Enter first date");
+  const value2 = prompt("Enter second date");
+  LogOutput(HandleInput(functions.CheckDates, value1, value2), event);
 });
 
-minutesToSecondsBtn.addEventListener("click", (event) => {
-  const value = parseInt(prompt("Enter points"));
-
-  if (value !== null) {
-    logger.log(
-      `The output of ${
-        event.originalTarget.innerHTML
-      } is : ${functions.MinutesToSeconds(value)}`
-    );
-  }
+bombBtn.addEventListener("click", (event) => {
+  const value = prompt("Enter jihad string");
+  LogOutput(HandleInput(functions.Bomb, value), event);
 });
 
-sumOfTwoPrecedingBtn.addEventListener("click", (event) => {
-  const value = parseInt(prompt("Enter value"));
-
-  if (value !== null) {
-    logger.log(
-      `The output of ${
-        event.originalTarget.innerHTML
-      } is : ${functions.SumPreceedingTwo(value)}`
-    );
-  }
+pastaBtn.addEventListener("click", (event) => {
+  const value = prompt("How many people will eat pasta?");
+  LogOutput(HandleInput(functions.CalcPasta, value), event);
 });
 
-daysToYearsBtn.addEventListener("click", (event) => {
-  const value = parseInt(prompt("Enter years"));
+bri4kaBtn.addEventListener("click", (event) => {
+  const value1 = prompt("Enter car price");
+  const value2 = prompt("Enter car age");
 
-  if (value !== null) {
-    logger.log(
-      `The output of ${
-        event.originalTarget.innerHTML
-      } is : ${functions.YearsToDays(value)}`
-    );
-  }
+  LogOutput(HandleInput(functions.CarPrice, value1, value2), event);
 });
 
-basketballPointsBtn.addEventListener("click", (event) => {
-  const valueOne = parseInt(prompt("Enter two pointers"));
-  const valueTwo = parseInt(prompt("Enter three pointers"));
-
-  if (valueOne !== null && valueTwo !== null) {
-    logger.log(
-      `The output of ${
-        event.originalTarget.innerHTML
-      } is : ${functions.BasketballCalc(valueOne, valueTwo)}`
-    );
-  }
+fugitiveWordBtn.addEventListener("click", (event) => {
+  const value = prompt("Enter crowd of letters");
+  LogOutput(HandleInput(functions.FindTheLowerWord, value), event);
 });
-
-animalLegsBtn.addEventListener("click", (event) => {
-  const valueOne = parseInt(prompt("Enter chickens"));
-  const valueTwo = parseInt(prompt("Enter pigs"));
-  const valueThree = parseInt(prompt("Enter cows"));
-
-  if (valueOne !== null && valueTwo !== null && valueThree !== null) {
-    logger.log(
-      `The output of ${
-        event.originalTarget.innerHTML
-      } is : ${functions.CountAnimalLegs(valueOne, valueTwo, valueThree)}`
-    );
-  }
-});
-
-sumAllPrecedingBtn.addEventListener("click", (event) => {
-  const value = parseInt(prompt("Enter value"));
-
-  if (value !== null) {
-    logger.log(
-      `The output of ${
-        event.originalTarget.innerHTML
-      } is : ${functions.SumPreceeding(value)}`
-    );
-  }
-});
-
-// const value = prompt("Hello");
-// console.log(value);
 
 function SwitchConsole() {
   if (switchElement.checked === true) {
@@ -183,4 +82,22 @@ function SwitchConsole() {
   } else {
     logger = FakeConsole;
   }
+}
+
+function HandleInput(callback) {
+  if (arguments.length === 1) {
+    logger.log("Not enough arguments");
+  } else if (arguments.length === 2) {
+    return callback(arguments[1]);
+  } else if (arguments.length === 3) {
+    return callback(arguments[1], arguments[2]);
+  } else if (arguments.length === 4) {
+    return callback(arguments[1], arguments[2], arguments[3]);
+  } else {
+    logger.log("Too many arguments!");
+  }
+}
+
+function LogOutput(value, event) {
+  logger.log(`The output of ${event.originalTarget.innerHTML} is : ${value}`);
 }
