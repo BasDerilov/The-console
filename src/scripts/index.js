@@ -2,6 +2,7 @@
 import { Greet } from "./greeting";
 import { FakeConsole } from "./console";
 import * as functions from "./functions";
+import { Drink, Toner, Friquency, Change, Winery } from "./abstractions";
 
 let logger = FakeConsole;
 
@@ -24,15 +25,46 @@ SwitchConsole();
 
 switchElement.addEventListener("click", SwitchConsole);
 
-Btn1.addEventListener("click", (event) => {});
+Btn1.addEventListener("click", (event) => {
+  const value = Drink.GenerateRandomMenu(5);
+  AlertUsedArray(value);
+  LogOutput(Drink.SortDrinks(value), event);
+});
 
-Btn2.addEventListener("click", (event) => {});
+Btn2.addEventListener("click", (event) => {
+  const value = new Toner(15, 5, 12);
+  AlertUsedObj(value);
+  LogOutput(value.InkLevels(), event);
+});
 
-Btn3.addEventListener("click", (event) => {});
+Btn3.addEventListener("click", (event) => {
+  const value = ["A", "B", "A", "A", "A", "C", "C", "C", "C", "D"];
+  AlertUsedArray(value);
+  LogOutput(new Friquency(value), event);
+});
 
-Btn4.addEventListener("click", (event) => {});
+Btn4.addEventListener("click", (event) => {
+  const value = parseInt(prompt("Enter the change you have"));
+  LogOutput(new Change(value), event);
+});
 
-Btn5.addEventListener("click", (event) => {});
+Btn5.addEventListener("click", (event) => {
+  const value = parseInt(
+    prompt(
+      "Enter the amount of wines in the store (if you enter more than 9 your PC will die)"
+    )
+  );
+
+  const wineList = new Winery().GenerateWineList(value);
+  const bestWine = Winery.GetSecondBestWine(wineList);
+
+  LogOutput(wineList, event);
+  bestWine !== null
+    ? logger.log(
+        `The second best wine is: ${bestWine.brand} - ${bestWine.price}`
+      )
+    : logger.log(`The second best wine is: ${bestWine}`);
+});
 
 Btn6.addEventListener("click", (event) => {});
 
@@ -54,26 +86,52 @@ function SwitchConsole() {
   }
 }
 
-function HandleInput(callback) {
-  if (arguments.length === 1) {
-    logger.log("Not enough arguments");
-  } else if (arguments.length === 2) {
-    return callback(arguments[1]);
-  } else if (arguments.length === 3) {
-    return callback(arguments[1], arguments[2]);
-  } else if (arguments.length === 4) {
-    return callback(arguments[1], arguments[2], arguments[3]);
+// function HandleInput(callback) {
+//   if (arguments.length === 1) {
+//     logger.log("Not enough arguments");
+//   } else if (arguments.length === 2) {
+//     return callback(arguments[1]);
+//   } else if (arguments.length === 3) {
+//     return callback(arguments[1], arguments[2]);
+//   } else if (arguments.length === 4) {
+//     return callback(arguments[1], arguments[2], arguments[3]);
+//   } else {
+//     logger.log("Too many arguments!");
+//   }
+// }
+
+function LogOutput(value, event) {
+  logger.log(`The output of ${event.originalTarget.innerHTML} is : `);
+  if (value.length) {
+    switchElement.checked === true
+      ? ""
+      : logger.log(
+          "Maybe use the browser console for this one (upper ricght corner tickbox)"
+        );
+    value.forEach((element) => {
+      logger.log(element);
+    });
   } else {
-    logger.log("Too many arguments!");
+    logger.log(value);
   }
 }
 
-function LogOutput(value, event) {
-  logger.log(`The output of ${event.originalTarget.innerHTML} is : ${value}`);
+function AlertUsedArray(arr) {
+  const values = [];
+
+  arr.forEach((element) => {
+    values.push(Object.values(element));
+  });
+
+  alert(
+    `The array that will be passed in is: ${values}\nYou can change that in the source code`
+  );
 }
 
-function AlertUsedArray(arr) {
+function AlertUsedObj(obj) {
   alert(
-    `The array that will be passed in is: ${arr}\nYou can change that in the source code`
+    `The object has the following values ${Object.keys(obj)} : ${Object.values(
+      obj
+    )}`
   );
 }
