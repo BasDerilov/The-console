@@ -146,5 +146,84 @@ export class Winery {
 export class Indicer {
   constructor(string) {
     const uniqueLetters = new Set(string);
+    // console.log(typeof 7);
+
+    uniqueLetters.forEach((element) => {
+      const temp = string.split("");
+      let indexes = temp.map((el, indx) => (el === element ? indx : ""));
+      indexes = indexes.filter((el) => typeof el == "number");
+      // console.log(indexes);
+      this[element] = indexes;
+    });
+  }
+}
+
+export class Student {
+  constructor(name, notes) {
+    this.name = name;
+    this.notes = notes;
+  }
+
+  static TopNote(arrayOfStudents) {
+    const students = [];
+
+    arrayOfStudents.forEach((student) => {
+      student.TopNote = student.notes.reduce((previousValue, currentValue) =>
+        currentValue > previousValue ? currentValue : previousValue
+      );
+
+      students.push(student);
+    });
+
+    return students;
+  }
+
+  static TopNoteStudent(arrayOfStudents) {
+    return arrayOfStudents.reduce((previousStuden, currentStudent) =>
+      previousStuden.TopNote < currentStudent ? currentStudent : previousStuden
+    );
+  }
+}
+
+export class Dominos {
+  //dominos are bastards with overpriced pizza
+  static FindEligible(listOfClientsObject, minSpent, minOrders) {
+    const eligible = [];
+
+    for (const [key, value] of Object.entries(listOfClientsObject)) {
+      const ordersCount = value.length;
+      const orderTotal = value.reduce(
+        (previous, current) => previous + current
+      );
+
+      if (orderTotal >= minSpent && ordersCount >= minOrders) {
+        eligible.push(key);
+      }
+    }
+
+    return eligible;
+  }
+}
+
+export class Image {
+  constructor(link) {
+    const parts = link.split("/");
+
+    this.id = parts[parts.length - 1];
+    this.type = this.#returnType(parts);
+  }
+
+  #returnType(parts) {
+    if (parts[parts.length - 2] === "a") {
+      return "album";
+    } else if (parts[parts.length - 2] === "gallery") {
+      return "gallery";
+    } else if (parts[2] === "i.imgur.com") {
+      return "image direct";
+    } else if (parts.length === 4) {
+      return "image";
+    } else {
+      return "unknown";
+    }
   }
 }

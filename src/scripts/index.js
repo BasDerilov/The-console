@@ -2,7 +2,17 @@
 import { Greet } from "./greeting";
 import { FakeConsole } from "./console";
 import * as functions from "./functions";
-import { Drink, Toner, Friquency, Change, Winery } from "./abstractions";
+import {
+  Drink,
+  Toner,
+  Friquency,
+  Change,
+  Winery,
+  Indicer,
+  Student,
+  Dominos,
+  Image,
+} from "./abstractions";
 
 let logger = FakeConsole;
 
@@ -66,17 +76,44 @@ Btn5.addEventListener("click", (event) => {
     : logger.log(`The second best wine is: ${bestWine}`);
 });
 
-Btn6.addEventListener("click", (event) => {});
+Btn6.addEventListener("click", (event) => {
+  const value = prompt("enter string");
 
-Btn7.addEventListener("click", (event) => {});
+  LogOutput(new Indicer(value), event);
+});
 
-Btn8.addEventListener("click", (event) => {});
+Btn7.addEventListener("click", (event) => {
+  const value = [
+    new Student("Ivan", [5, 4, 3, 2, 6]),
+    new Student("Petko", [3, 2, 3, 5]),
+    new Student("Stancho", [2, 2, 5, 2, 3, 5]),
+  ];
 
-Btn9.addEventListener("click", (event) => {});
+  const students = Student.TopNote(value);
+  LogOutput(students, event);
+  LogOutput(Student.TopNoteStudent(students), event);
+});
 
-Btn10.addEventListener("click", (event) => {});
+Btn8.addEventListener("click", (event) => {
+  const value = {
+    DimitarTrendafilov: [5.5, 4.5, 6, 3],
+    IvanVladimirov: [4, 7.2, 6],
+    VasilDudinski: [18.5],
+    NikiAngelov: [3.5, 3.5, 2.5, 3, 4],
+  };
 
-Btn11.addEventListener("click", (event) => {});
+  const minOrders = parseFloat(
+    prompt("Enter minimum count of orders for free pizza")
+  );
+  const minValue = parseFloat(prompt("Enter minimum total spending value"));
+
+  LogOutput(Dominos.FindEligible(value, minValue, minOrders), event);
+});
+
+Btn9.addEventListener("click", (event) => {
+  const value = prompt("Enter image link");
+  LogOutput(new Image(value), event);
+});
 
 function SwitchConsole() {
   if (switchElement.checked === true) {
