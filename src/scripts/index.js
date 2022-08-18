@@ -1,41 +1,50 @@
-import { NameValidation, NumericValidation, Hide, Show } from "./functions";
-import { Slots } from "./game";
+import {
+  ExitGame,
+  FormStakeSize,
+  InGameStakeSizeCheck,
+  NameValidation,
+  NumericValidation,
+  Spin,
+  StakeSizeCheck,
+  StartGame,
+} from "./functions";
 
-const [form, nameInput, balanceInput, stakeInput] = [
+export const [
+  form,
+  nameInput,
+  balanceInput,
+  stakeInput,
+  startBtn,
+  lastWin,
+  exitBtn,
+  slotsArr,
+  inGameBalance,
+  inGameStake,
+  spinBtn,
+  game,
+  spinnerArr,
+] = [
   document.getElementById("form"),
   document.getElementById("nameInput"),
   document.getElementById("balanceInput"),
   document.getElementById("stakeInput"),
+  document.getElementById("start"),
+  document.getElementById("lastWinAmount"),
+  document.getElementById("exit"),
+  document.querySelectorAll(".slot"),
+  document.getElementById("inGameBalance"),
+  document.getElementById("inGameStake"),
+  document.getElementById("spin"),
+  document.getElementById("game"),
+  document.querySelectorAll(".spinner"),
 ];
 
-let slotsGame = undefined;
-
-const nameRegex = new RegExp("[a-zA-Z ]");
-const moneyRegex = new RegExp("[0-9]");
-
+inGameStake.addEventListener("keypress", NumericValidation);
+inGameStake.addEventListener("keyup", InGameStakeSizeCheck);
 nameInput.addEventListener("keypress", NameValidation);
 balanceInput.addEventListener("keypress", NumericValidation);
 stakeInput.addEventListener("keypress", NumericValidation);
-
-document.getElementById("start").addEventListener("click", (_ev) => {
-  // form.classList.add("visually-hidden");
-
-  if (nameInput.value.length !== 0) {
-    if (balanceInput.value.length !== 0) {
-      if (stakeInput.value.length !== 0) {
-        Hide(form);
-        slotsGame = new Slots(
-          nameInput.value,
-          balanceInput.value,
-          stakeInput.value
-        );
-      } else {
-        alert("Stake field is required");
-      }
-    } else {
-      alert("Balance field is required");
-    }
-  } else {
-    alert("Name field is required");
-  }
-});
+stakeInput.addEventListener("keyup", FormStakeSize);
+startBtn.addEventListener("click", StartGame);
+exitBtn.addEventListener("click", ExitGame);
+spinBtn.addEventListener("click", Spin);

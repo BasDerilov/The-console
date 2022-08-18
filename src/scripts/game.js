@@ -5,17 +5,15 @@ export class Slots {
     this.stake = stake;
     this.tokens = [];
     this.RandomizeTokens(5);
-    this.slotsElementArrray = document.querySelectorAll("slot");
-    this.balanceElement = document.getElementById("balance");
-    this.stakeElement = document.getElementById("stake");
+    this.spins = 0;
   }
 
   Spin() {
     this.balance -= this.stake;
-
     this.RandomizeTokens(5);
-
-    this.balance *= this.GetMultiplier();
+    this.lastWin = this.stake * this.GetMultiplier();
+    this.balance += this.lastWin;
+    this.spins++;
   }
 
   GetMultiplier() {
@@ -43,7 +41,7 @@ export class Slots {
       }
     });
 
-    return 1;
+    return 0;
   }
 
   RandomizeTokens(tokenCount) {
