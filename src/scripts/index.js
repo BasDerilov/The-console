@@ -1,4 +1,5 @@
 import {
+  ContinueGame,
   ExitGame,
   FormStakeSize,
   InGameStakeSizeCheck,
@@ -23,6 +24,14 @@ export const [
   spinBtn,
   game,
   spinnerArr,
+  modalplayerName,
+  modalWinnings,
+  modalStake,
+  modalSpins,
+  notEnoughMoneyModal,
+  noMoneyContinue,
+  noMoneyExit,
+  noMoneyInput,
 ] = [
   document.getElementById("form"),
   document.getElementById("nameInput"),
@@ -37,6 +46,14 @@ export const [
   document.getElementById("spin"),
   document.getElementById("game"),
   document.querySelectorAll(".spinner"),
+  document.getElementById("playerName"),
+  document.getElementById("winnings"),
+  document.getElementById("stake"),
+  document.getElementById("spinCount"),
+  document.getElementById("noMoneyModal"),
+  document.getElementById("continueGame"),
+  document.getElementById("exitFromModal"),
+  document.getElementById("addMoney"),
 ];
 
 inGameStake.addEventListener("keypress", NumericValidation);
@@ -48,3 +65,5 @@ stakeInput.addEventListener("keyup", FormStakeSize);
 startBtn.addEventListener("click", StartGame);
 exitBtn.addEventListener("click", ExitGame);
 spinBtn.addEventListener("click", Spin);
+noMoneyExit.addEventListener("click", ExitGame);
+noMoneyContinue.addEventListener("click", ContinueGame);

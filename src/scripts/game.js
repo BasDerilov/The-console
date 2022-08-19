@@ -28,18 +28,24 @@ export class Slots {
       }
     }
 
-    for (let i = 0; i < Math.ceil(this.tokens.length / 3); i++) {
+    for (let i = 0; i < 3; i++) {
       const element = this.tokens[i];
       if (this.tokens.slice(i, i + 3).every((char) => char === element)) {
         return 5;
       }
     }
 
-    this.tokens.forEach((token) => {
-      if (this.tokens.filter((candidate) => candidate === token).length === 3) {
+    for (let i = 0; i < this.tokens.length; i++) {
+      const token = this.tokens[i];
+
+      const matches = this.tokens.filter(
+        (candidate) => candidate === token
+      ).length;
+
+      if (matches === 3) {
         return 3;
       }
-    });
+    }
 
     return 0;
   }
@@ -47,7 +53,7 @@ export class Slots {
   RandomizeTokens(tokenCount) {
     this.tokens = [];
     for (let i = 0; i < tokenCount; i++) {
-      this.tokens.push(String.fromCharCode(this.#getRandomInt(33, 127)));
+      this.tokens.push(String.fromCharCode(this.#getRandomInt(65, 69)));
     }
   }
 

@@ -26,7 +26,54 @@
       </div>
     </header>
 
-    <!-- Modal -->
+    <div
+      class="modal fade text-primary"
+      id="noMoneyModal"
+      tabindex="-1"
+      role="dialog"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content bg-secondary">
+          <div class="modal-header">
+            <h5 class="modal-title fs-3">
+              Looks like you ran out of cash <span id="noCashName"></span>
+            </h5>
+          </div>
+          <div class="modal-body fs-4">
+            <div class="mb-3">
+              <label for="addMoney" class="form-label">Balance</label>
+              <input
+                type="number"
+                class="form-control bg-black text-primary fs-3 border-primary"
+                id="addMoney"
+                placeholder="0$"
+                min="0"
+              />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              id="exitFromModal"
+              type="button"
+              data-bs-dismiss="modal"
+              class="btn border border-primary"
+            >
+              Exit
+            </button>
+            <button
+              id="continueGame"
+              type="button"
+              data-bs-dismiss="modal"
+              class="btn border border-primary"
+            >
+              Continue
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div
       class="modal fade text-primary"
       id="exitModal"
@@ -43,9 +90,12 @@
           </div>
           <div class="modal-body fs-4">
             <div>
-              <span>You are leaving with: </span><span id="winnings"></span>
+              <span>You are leaving with: </span><span id="winnings"></span
+              ><span>$</span>
             </div>
-            <div><span>With stakes: </span><span id="stake"></span></div>
+            <div>
+              <span>With stakes: </span><span id="stake"></span><span>$</span>
+            </div>
             <div>
               <span>And count of spins: </span><span id="spinCount"></span>
             </div>

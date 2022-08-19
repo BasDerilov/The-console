@@ -45,6 +45,10 @@ export const StartGame = (_event) => {
 
 export const ExitGame = (_event) => {
   Hide(main.game);
+  main.modalplayerName.textContent = gameObj.playerName;
+  main.modalWinnings.textContent = gameObj.balance;
+  main.modalStake.textContent = gameObj.stake;
+  main.modalSpins.textContent = gameObj.spins;
   Show(main.form);
 };
 
@@ -71,6 +75,9 @@ export const Spin = async (_event) => {
   main.lastWin.textContent = gameObj.lastWin;
   main.inGameBalance.textContent = gameObj.balance;
   main.spinBtn.disabled = false;
+  if (gameObj.balance <= 0) {
+    NotEnoughMoneyModal();
+  }
 };
 
 function InitGame() {
@@ -96,6 +103,18 @@ function CorrectInput(event, maxValue) {
     event.preventDefault();
   }
 }
+
+function NotEnoughMoneyModal() {
+  const modal = new Modal(main.notEnoughMoneyModal, { backdrop: false });
+
+  modal.show();
+}
+
+export const ContinueGame = (_event) => {
+  gameObj.balance = main.noMoneyInput.value;
+  gameObj.stake = 0;
+  InitGame();
+};
 
 export function ValidateInput(inputEl, regex) {
   return regex.test(inputEl.value);
