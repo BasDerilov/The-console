@@ -5,9 +5,9 @@ import {
   NameValidation,
   NumericValidation,
   Spin,
-  StakeSizeCheck,
   StartGame,
 } from "./functions";
+require("bootstrap");
 
 export const [
   form,

@@ -26,6 +26,43 @@
       </div>
     </header>
 
+    <!-- Modal -->
+    <div
+      class="modal fade text-primary"
+      id="exitModal"
+      tabindex="-1"
+      role="dialog"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content bg-secondary">
+          <div class="modal-header">
+            <h5 class="modal-title fs-3">
+              Bye bye <span id="playerName"></span>
+            </h5>
+          </div>
+          <div class="modal-body fs-4">
+            <div>
+              <span>You are leaving with: </span><span id="winnings"></span>
+            </div>
+            <div><span>With stakes: </span><span id="stake"></span></div>
+            <div>
+              <span>And count of spins: </span><span id="spinCount"></span>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              data-bs-dismiss="modal"
+              class="btn border border-primary"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="container">
       <div class="bg-black border m-3 border-primary" id="form">
         <div
@@ -73,7 +110,14 @@
             <span>You just won: </span><span id="lastWinAmount">0</span
             ><span>$</span>
           </div>
-          <button class="btn-outline-primary btn" id="exit">Exit</button>
+          <button
+            class="btn-outline-primary btn"
+            id="exit"
+            data-bs-toggle="modal"
+            data-bs-target="#exitModal"
+          >
+            Exit
+          </button>
         </div>
         <div
           id="slots"
