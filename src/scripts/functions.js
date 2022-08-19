@@ -106,13 +106,14 @@ function CorrectInput(event, maxValue) {
 
 function NotEnoughMoneyModal() {
   const modal = new Modal(main.notEnoughMoneyModal, { backdrop: false });
-
+  main.noCashName.textContent = gameObj.playerName;
   modal.show();
 }
 
 export const ContinueGame = (_event) => {
   gameObj.balance = main.noMoneyInput.value;
   gameObj.stake = 0;
+
   InitGame();
 };
 

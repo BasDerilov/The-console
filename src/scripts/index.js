@@ -32,6 +32,7 @@ export const [
   noMoneyContinue,
   noMoneyExit,
   noMoneyInput,
+  noCashName,
 ] = [
   document.getElementById("form"),
   document.getElementById("nameInput"),
@@ -54,6 +55,7 @@ export const [
   document.getElementById("continueGame"),
   document.getElementById("exitFromModal"),
   document.getElementById("addMoney"),
+  document.getElementById("noCashName"),
 ];
 
 inGameStake.addEventListener("keypress", NumericValidation);
